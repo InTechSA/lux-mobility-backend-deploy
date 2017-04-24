@@ -1,0 +1,28 @@
+version: '2.0'
+services:
+  mongodb:
+    image: 'mongo:3.4.3'
+    volumes:
+      - "/data/db"
+    ports:
+      - "27017:27017"
+    command: '--smallfiles --storageEngine wiredTiger'
+  api:
+    build:
+      context: './lux-mobility-backend'
+    ports:
+      - '3000:3000'
+    links:
+      - 'mongodb:luxmobility-db'
+    environment:
+      - NODE_ENV=production
+  alert-api:
+    build:
+      context: './lux-mobility-alert-backend'
+    ports:
+      - '3001:3000'
+    environment:
+      - NODE_ENV=production
+    links:
+      - 'api:luxmobility-api'
+      - 'mongodb:luxmobility-db'

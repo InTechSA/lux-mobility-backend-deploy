@@ -1,0 +1,8 @@
+[submodule "lux-mobility-backend"]
+	path = lux-mobility-backend
+	url = https://github.com/InTechSA/lux-mobility-backend
+	branch = dokku
+[submodule "lux-mobility-alert-backend"]
+	path = lux-mobility-alert-backend
+	url = https://github.com/InTechSA/lux-mobility-alert-backend
+	branch = dokku
